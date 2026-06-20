@@ -1,6 +1,5 @@
 import { Sidebar } from "@/components/Sidebar";
 import { AmbientSound } from "@/components/AmbientSound";
-import { PomodoroTimer } from "@/components/PomodoroTimer";
 
 export default function DashboardLayout({
   children,
