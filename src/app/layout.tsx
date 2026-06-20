@@ -15,8 +15,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hub-turma-b.vercel.app"),
   title: "Hub Turma B",
-  description: "Excelência, Foco e Exclusividade. O portal definitivo de Direito.",
+  description: "De: Gabriel Médici Para: Turma de Direito Noturno B Unicesumar",
 };
 
 export default function RootLayout({
