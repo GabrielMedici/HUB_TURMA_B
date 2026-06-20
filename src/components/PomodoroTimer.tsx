@@ -32,9 +32,10 @@ export function PomodoroTimer() {
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
+  // 👇 A mágica acontece aqui: adicionei 'lg:hidden' no final da segunda linha! 👇
   const containerClasses = isExpanded
     ? "fixed inset-0 z-50 bg-black flex flex-col items-center justify-center p-6"
-    : "relative bg-background-surface border border-white/5 rounded-2xl p-6 flex flex-col items-center justify-center shadow-lg w-full";
+    : "relative bg-background-surface border border-white/5 rounded-2xl p-6 flex flex-col items-center justify-center shadow-lg w-full lg:hidden";
 
   return (
     <AnimatePresence>
