@@ -5,20 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, XCircle, ArrowRight, RotateCcw, Target } from "lucide-react";
 import Link from "next/link";
 
-export interface Questao {
-  id: string;
-  materia_id: string;
-  pergunta: string;
-  alternativa_a: string;
-  alternativa_b: string;
-  alternativa_c: string;
-  alternativa_d: string;
-  resposta_correta: 'a' | 'b' | 'c' | 'd';
-  explicacao: string;
-}
+import { QuizQuestion } from "@/data/conteudo";
 
 interface QuizEngineProps {
-  questoes: Questao[];
+  questoes: QuizQuestion[];
 }
 
 export function QuizEngine({ questoes }: QuizEngineProps) {
@@ -27,6 +17,7 @@ export function QuizEngine({ questoes }: QuizEngineProps) {
   const [isAnswered, setIsAnswered] = useState(false);
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
+  const [consecutiveErrors, setConsecutiveErrors] = useState(0);
 
   const questaoAtual = questoes[currentIndex];
 
@@ -37,6 +28,9 @@ export function QuizEngine({ questoes }: QuizEngineProps) {
 
     if (option === questaoAtual.resposta_correta) {
       setScore((prev) => prev + 1);
+      setConsecutiveErrors(0); // Reset errors
+    } else {
+      setConsecutiveErrors((prev) => prev + 1);
     }
   };
 
@@ -56,6 +50,7 @@ export function QuizEngine({ questoes }: QuizEngineProps) {
     setIsAnswered(false);
     setScore(0);
     setShowResults(false);
+    setConsecutiveErrors(0);
   };
 
   if (questoes.length === 0) {
@@ -112,6 +107,25 @@ export function QuizEngine({ questoes }: QuizEngineProps) {
 
   return (
     <div className="w-full max-w-3xl mx-auto">
+      <AnimatePresence>
+        {consecutiveErrors >= 3 && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="mb-6 p-4 rounded-xl bg-accent-gold/10 border border-accent-gold/30 flex items-start gap-3"
+          >
+            <div className="p-2 bg-accent-gold/20 rounded-lg shrink-0 mt-0.5">
+              <CheckCircle2 className="w-5 h-5 text-accent-gold" />
+            </div>
+            <div>
+              <strong className="block text-accent-gold font-medium mb-1">Respire fundo. A Turma B não reprova.</strong>
+              <p className="text-text-secondary text-sm">É errando aqui que se acerta na segunda-feira. Leia a justificativa com calma e tente de novo.</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="mb-8 flex items-center justify-between">
         <span className="text-accent-gold font-medium tracking-widest uppercase text-xs">
           Questão {currentIndex + 1} de {questoes.length}

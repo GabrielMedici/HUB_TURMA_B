@@ -1,6 +1,7 @@
 import { PomodoroTimer } from "@/components/PomodoroTimer";
 import { BookOpen, Shield, Scale, Target, ArrowRight } from "lucide-react";
 import { SOSBanner } from "@/components/SOSBanner";
+import { CountdownTimer } from "@/components/CountdownTimer";
 import Link from "next/link";
 
 export default function DashboardHome() {
@@ -15,13 +16,16 @@ export default function DashboardHome() {
       {/* Topo: Componente de Emergência Véspera de Prova */}
       <SOSBanner />
       
-      <header>
-        <h2 className="font-playfair text-4xl text-text-primary tracking-tight mb-2">
-          Acervo Cirúrgico
-        </h2>
-        <p className="text-text-secondary font-light">
-          Acesso imediato e direto aos resumos focados para a sua reta final.
-        </p>
+      <header className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h2 className="font-playfair text-4xl text-text-primary tracking-tight mb-2">
+            Acervo Cirúrgico
+          </h2>
+          <p className="text-text-secondary font-light">
+            Acesso imediato e direto aos resumos focados para a sua reta final.
+          </p>
+        </div>
+        <CountdownTimer />
       </header>
 
       {/* Grid de Acesso Rápido às Matérias (1 coluna no mobile, botões altos) */}

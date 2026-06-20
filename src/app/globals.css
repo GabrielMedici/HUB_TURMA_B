@@ -7,3 +7,38 @@
     @apply bg-background-base text-text-primary antialiased;
   }
 }
+
+@media print {
+  /* Hide all non-content UI elements for clean PDF export */
+  aside, header, nav, button, .no-print {
+    display: none !important;
+  }
+  
+  body, main {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .prose-invert {
+    color: black !important;
+  }
+  
+  .prose-invert * {
+    color: black !important;
+  }
+  
+  .prose-invert h1, .prose-invert h2, .prose-invert h3 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+  
+  .prose-invert blockquote {
+    border-left-color: #000 !important;
+    color: #333 !important;
+  }
+  
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

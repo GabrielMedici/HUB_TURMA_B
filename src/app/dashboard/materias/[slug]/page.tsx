@@ -5,6 +5,8 @@ import Link from "next/link";
 import { lessonsDB } from "@/data/conteudo";
 import { notFound } from "next/navigation";
 
+import { ExportButton } from "@/components/ExportButton";
+
 export default async function MateriaPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   
@@ -63,10 +65,13 @@ export default async function MateriaPage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="max-w-4xl mx-auto pb-20">
-      <Link href="/dashboard" className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-gold transition-colors text-sm mb-8">
-        <ArrowLeft className="w-4 h-4" />
-        Voltar para Acervo
-      </Link>
+      <div className="flex items-center justify-between mb-8">
+        <Link href="/dashboard" className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-gold transition-colors text-sm">
+          <ArrowLeft className="w-4 h-4" />
+          Voltar para Acervo
+        </Link>
+        <ExportButton />
+      </div>
 
       <div className="mb-12">
         <span className="text-accent-gold font-medium tracking-widest uppercase text-xs mb-4 flex items-center gap-2">
