@@ -32,6 +32,10 @@ export function CountdownTimer() {
 
   if (!timeLeft) return null; // Hydration safe
 
+  // 👇 ESSA É A ÚNICA LINHA QUE FOI ADICIONADA 👇
+  return null; 
+  // 👆 Isso faz o botão ficar invisível. Quando quiser que ele volte, é só apagar essa linha! 👆
+
   return (
     <div className="flex items-center gap-3 bg-[#1A1A1A]/80 backdrop-blur-md px-5 py-3 rounded-full border border-white/5 shadow-xl">
       <div className="p-1.5 bg-accent-gold/10 rounded-full animate-pulse">
