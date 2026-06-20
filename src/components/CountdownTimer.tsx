@@ -33,7 +33,7 @@ export function CountdownTimer() {
   if (!timeLeft) return null; // Hydration safe
 
   return (
-    <div className="hidden flex items-center gap-3 bg-[#1A1A1A]/80 backdrop-blur-md px-5 py-3 rounded-full border border-white/5 shadow-xl">
+    <div className="flex items-center gap-3 bg-[#1A1A1A]/80 backdrop-blur-md px-5 py-3 rounded-full border border-white/5 shadow-xl">
       <div className="p-1.5 bg-accent-gold/10 rounded-full animate-pulse">
         <Hourglass className="w-4 h-4 text-accent-gold" />
       </div>
@@ -42,10 +42,9 @@ export function CountdownTimer() {
           Modo Foco Ativado
         </span>
         <span className="text-sm font-light text-text-primary leading-none">
-          Faltam <strong className="text-accent-gold font-medium">{timeLeft?.hours}h {timeLeft?.minutes}m</strong> para a prova
+          Faltam <strong className="text-accent-gold font-medium">{timeLeft.hours}h {timeLeft.minutes}m</strong> para a prova
         </span>
       </div>
     </div>
   );
 }
-  
