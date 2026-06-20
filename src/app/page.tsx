@@ -48,10 +48,17 @@ export default function GatewayPage() {
               <span className="text-accent-gold italic font-light">Turma B</span>
             </h1>
             
-            <p className="text-text-secondary text-lg md:text-xl font-light mb-14 max-w-xl leading-relaxed">
-              O acesso irrestrito ao acervo definitivo. Resumos cirúrgicos, alertas de pegadinhas e simulados precisos para a sua reta final.
-            </p>
-
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-14 max-w-2xl backdrop-blur-sm relative shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0A0A0A] px-4 text-accent-gold/40">
+                <LockOpen className="w-5 h-5" />
+              </div>
+              <p className="text-text-primary text-lg md:text-xl font-light leading-relaxed text-center">
+                "Turma B, tudo bem? Este é um projeto pessoal, testem a plataforma e espero que ajude imensamente. Bons estudos!"
+              </p>
+              <p className="text-accent-gold font-medium tracking-widest uppercase text-xs mt-6 text-center">
+                — Feito com carinho, Gabriel Médici
+              </p>
+            </div>
             <button
               onClick={handleUnlock}
               className="group relative px-10 md:px-14 py-5 md:py-6 rounded-full overflow-hidden active:scale-95 transition-all duration-300"
