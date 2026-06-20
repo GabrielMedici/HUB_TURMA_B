@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { Target, ArrowLeft, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { QuizEngine } from "@/components/QuizEngine";

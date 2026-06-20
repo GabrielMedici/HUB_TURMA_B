@@ -7,6 +7,8 @@ import { notFound } from "next/navigation";
 
 import { ExportButton } from "@/components/ExportButton";
 
+export const runtime = 'edge';
+
 export default async function MateriaPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   
