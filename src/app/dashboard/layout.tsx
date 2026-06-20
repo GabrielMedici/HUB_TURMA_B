@@ -49,10 +49,10 @@ export default function DashboardLayout({
           </div>
         </div>
 
-        {/* <Floating Pomodoro Timer /> */}
+        {/* <Floating Pomodoro Timer />
         <div className="fixed bottom-6 right-6 z-40 w-72 md:w-80 no-print hidden md:block">
           <PomodoroTimer />
-        </div>
+        </div> */}
       </main>
     </div>
   );
