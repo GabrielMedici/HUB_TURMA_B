@@ -12,10 +12,15 @@ export default async function MateriaPage({ params }: { params: Promise<{ slug: 
   
   const materiaLessons = lessonsDB.filter(aula => aula.materia === slug);
 
-  const mappedLessons = materiaLessons.length > 0 ? materiaLessons.map((aula) => ({
-    id: aula.id,
-    title: aula.title,
-    content: (
+  const mappedLessons = materiaLessons.length > 0 ? materiaLessons.map((aula) => {
+    // Generate clean text for Text-to-Speech
+    const rawText = `Aula: ${aula.title}. Resumo: ${aula.resumo.replace(/\[([^\]]+)\]/g, '$1')}. Base legal: ${aula.baseLegal ? aula.baseLegal.replace(/\[([^\]]+)\]/g, '$1') : 'Não aplicável'}. Pegadinha: ${aula.pegadinha ? aula.pegadinha.replace(/\[([^\]]+)\]/g, '$1') : 'Sem pegadinhas.'}`;
+    
+    return {
+      id: aula.id,
+      title: aula.title,
+      rawText,
+      content: (
       <div className="prose prose-invert max-w-none font-sans">
         {/* Resumo Didático */}
         <div className="text-text-secondary leading-relaxed text-lg mb-8">
@@ -52,8 +57,9 @@ export default async function MateriaPage({ params }: { params: Promise<{ slug: 
           </div>
         )}
       </div>
-    ),
-  })) : [
+    )
+    };
+  }) : [
     {
       id: "empty",
       title: "Matéria em Elaboração",

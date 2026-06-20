@@ -1,4 +1,6 @@
 import { Sidebar } from "@/components/Sidebar";
+import { AmbientSound } from "@/components/AmbientSound";
+import { PomodoroTimer } from "@/components/PomodoroTimer";
 
 export default function DashboardLayout({
   children,
@@ -33,9 +35,9 @@ export default function DashboardLayout({
               </h1>
             </div>
             
-            {/* Espaço reservado para avatar/perfil no futuro */}
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-background-surface border border-white/10 flex items-center justify-center text-accent-gold font-playfair font-medium shadow-sm">
+              <AmbientSound />
+              <div className="w-10 h-10 rounded-full bg-background-surface border border-white/10 flex items-center justify-center text-accent-gold font-playfair font-medium shadow-sm cursor-default">
                 A
               </div>
             </div>
@@ -46,6 +48,11 @@ export default function DashboardLayout({
           <div className="p-10 max-w-6xl mx-auto">
             {children}
           </div>
+        </div>
+
+        {/* Floating Pomodoro Timer */}
+        <div className="fixed bottom-6 right-6 z-40 w-72 md:w-80 no-print hidden md:block">
+          <PomodoroTimer />
         </div>
       </main>
     </div>

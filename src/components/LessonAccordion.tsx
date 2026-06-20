@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, CheckCircle2, Circle } from "lucide-react";
+import { AudioPlayerButton } from "./AudioPlayerButton";
 
 interface Lesson {
   id: string;
   title: string;
   content: React.ReactNode;
+  rawText?: string;
 }
 
 interface LessonAccordionProps {
@@ -70,13 +72,20 @@ export function LessonAccordion({ lessons }: LessonAccordionProps) {
                   {lesson.title}
                 </h3>
               </div>
-              <motion.div
-                animate={{ rotate: isOpen ? 180 : 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className={`transition-colors ${isOpen ? 'text-accent-gold' : 'text-text-secondary group-hover:text-white'}`}
-              >
-                <ChevronDown className="w-5 h-5" />
-              </motion.div>
+              <div className="flex items-center gap-4">
+                {lesson.rawText && isOpen && (
+                  <div className="hidden md:block">
+                    <AudioPlayerButton textToRead={lesson.rawText} />
+                  </div>
+                )}
+                <motion.div
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className={`transition-colors ${isOpen ? 'text-accent-gold' : 'text-text-secondary group-hover:text-white'}`}
+                >
+                  <ChevronDown className="w-5 h-5" />
+                </motion.div>
+              </div>
             </button>
             
             <AnimatePresence initial={false}>

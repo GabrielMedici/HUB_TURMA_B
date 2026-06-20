@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, BookOpen, Shield, Scale, Target, LogOut } from "lucide-react";
+import { Home, BookOpen, Shield, Scale, Target, LogOut, Brain } from "lucide-react";
 import { motion } from "framer-motion";
 
 const navItems = [
@@ -11,6 +11,7 @@ const navItems = [
   { name: "Penal", href: "/dashboard/materias/penal", icon: Shield },
   { name: "Const.", href: "/dashboard/materias/constitucional", icon: Scale },
   { name: "Simulados", href: "/dashboard/simulados", icon: Target },
+  { name: "Flashcards", href: "/dashboard/flashcards", icon: Brain },
 ];
 
 export function Sidebar() {
